@@ -1,3 +1,9 @@
+<img width="1522" height="723" alt="image" src="https://github.com/user-attachments/assets/d5dce554-1a5b-4c42-a464-dce3fdd0446c" />
+
+
+
+
+
 # SentinelDC
 
 Painel NOC para data center: valida a ordem de serviço (OS) contra a topologia física **antes** de a equipe mexer no rack, vigia quedas **durante** a OS e corta cargas de baixa criticidade quando a UPS ou a temperatura saem do limite.
