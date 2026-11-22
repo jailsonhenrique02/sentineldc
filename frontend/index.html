@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SentinelDC · Painel NOC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>SentinelDC</h1>
+    <div class="contadores" id="contadores" aria-live="polite"></div>
+    <div class="relogio"><span id="conn" class="conn off">sem conexão</span> <time id="relogio"></time></div>
+  </header>
+
+  <div id="banner" class="banner" role="alert" hidden></div>
+
+  <main class="layout">
+    <section aria-label="Mapa dos racks">
+      <div class="legenda">
+        <span><i class="k ok"></i>online</span><span><i class="k crit"></i>offline</span>
+        <span><i class="k shed"></i>desligado pela autocura</span>
+        <span><i class="k esc"></i>escopo da OS</span><span><i class="k imp"></i>raio de impacto</span>
+        <span class="dica">Clique nos ativos para montar o escopo de uma OS.</span>
+      </div>
+      <div id="racks" class="racks"></div>
+    </section>
+
+    <aside class="lateral">
+      <nav class="abas" role="tablist">
+        <button role="tab" data-tab="os" aria-selected="true">Ordens de serviço</button>
+        <button role="tab" data-tab="ev" aria-selected="false">Eventos</button>
+        <button role="tab" data-tab="sim" aria-selected="false">Simulador</button>
+      </nav>
+
+      <div class="aba" id="aba-os">
+        <form class="card" id="form-os" onsubmit="return false">
+          <h2>Nova OS</h2>
+          <label>Descrição<textarea id="f-desc" rows="2" placeholder="Ex.: trocar fonte do SRV-BKP-01"></textarea></label>
+          <div class="linha">
+            <label>Rack da OS<select id="f-rack"></select></label>
+            <label>Responsável<input id="f-resp" value="noc"></label>
+          </div>
+          <div>
+            <span class="rotulo">Escopo</span>
+            <div id="chips" class="chips"></div>
+          </div>
+          <div id="resultado" class="resultado" hidden></div>
+          <button class="primario" id="btn-abrir" type="button">Solicitar OS</button>
+        </form>
+        <div id="lista-os" class="lista-os"></div>
+      </div>
+
+      <div class="aba" id="aba-ev" hidden><ol id="logs" class="logs"></ol></div>
+
+      <div class="aba" id="aba-sim" hidden>
+        <div id="sim" class="card sim"></div>
+      </div>
+    </aside>
+  </main>
+  <div id="toast" class="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
